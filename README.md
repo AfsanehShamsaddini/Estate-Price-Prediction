@@ -4,7 +4,7 @@ I worked on the Mumbai Property Dataset, which I scraped from the www.99acres.co
 
 The focus of this work was data cleaning, data analysis, and model building. 
 
-# In this project, I compared different types of machine learning algorithms, including:
+## In this project, I compared different types of machine learning algorithms, including:
   1. Linear Regression
   2. Decision Tree
   3. Random Forest
