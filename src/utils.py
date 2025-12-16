@@ -20,11 +20,12 @@ def to_float(x):
 
 def parse_price_to_lakh(price_str: str):
     """
-    تبدیل قیمت‌های شبیه:
-    '2.4 Crore' -> 240 (Lakh)
-    '95 Lac'    -> 95 (Lakh)
-    '1 Cr'      -> 100 (Lakh)
-    اگر نتوانست، None برمی‌گرداند.
+    # Convert prices like:
+    # '2.4 Crore' -> 240 (Lakh)
+    # '95 Lac'    -> 95 (Lakh)
+    # '1 Cr'      -> 100 (Lakh)
+    # Returns None if conversion fails
+
     """
     if price_str is None:
         return None
