@@ -183,19 +183,6 @@ If you have feedback or suggestions, feel free to open an issue or reach out.
 
 ```
 
----
-
-# آیا لازم هست تصویر از خروجی بذاری؟
-لازم نیست، ولی **خیلی توصیه می‌شه** ✅  
-چون وقتی ریکروتر وارد ریپو می‌شه، با دیدن ۲ تا عکس (Pred vs True و Residuals) سریع می‌فهمه پروژه “واقعی” است و فقط نوت‌بوک نیست.
-
-## نکته مهم: اگر `reports/figures/` توی `.gitignore` هست
-اگر تو `.gitignore` نوشته‌ای `reports/figures/`، عکس‌ها روی GitHub آپلود نمی‌شن.
-
-دو راه ساده داری:
-
-### راه 1 (پیشنهادی): پوشه تصاویر را از gitignore حذف کن
-از `.gitignore` این خط را پاک کن:
 ```
 
 reports/figures/
@@ -206,12 +193,4 @@ reports/figures/
 git add reports/figures/*.png
 git commit -m "Add evaluation plots to README"
 git push
-````
-
-### راه 2: یک پوشه جدا برای تصاویر بساز
-
-مثلاً `assets/` و عکس‌ها را کپی کن آنجا، و در README از `assets/...` لینک بده.
-
----
-
-اگر دوست داری، همین الان بگو `.gitignore` تو دقیقاً چی نوشته (یا اینجا paste کن) تا دقیق بگم کدوم خط‌ها را تغییر بدهی که عکس‌ها روی GitHub نمایش داده شوند.
+.
