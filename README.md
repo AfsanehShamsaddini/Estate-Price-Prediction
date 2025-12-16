@@ -1,8 +1,4 @@
-حتماً. این یک **README کامل و آماده کپی/پیست** است (با استیکر/بدج + نتیجه‌های واقعی شما). بعدش هم جواب می‌دم آیا عکس لازم است یا نه و چطور اضافه‌اش کنی.
 
----
-
-```md
 # 🏙️ Mumbai House Price Prediction 🏠💸
 
 Predict **Mumbai residential property prices** using machine learning, based on structured listing features such as **area (sq ft)**, **BHK**, **property type**, **region/locality**, **availability**, and **property age**.
