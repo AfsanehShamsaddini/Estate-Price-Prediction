@@ -181,16 +181,4 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 If you have feedback or suggestions, feel free to open an issue or reach out.
 
-```
 
-```
-
-reports/figures/
-
-````
-بعد:
-```bash
-git add reports/figures/*.png
-git commit -m "Add evaluation plots to README"
-git push
-.
