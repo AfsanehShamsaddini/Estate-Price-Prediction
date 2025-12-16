@@ -9,7 +9,7 @@ OUT_DIR = Path("data/processed")
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 def main():
-    # 1) اولویت: اگر Final_dataset.csv داری، همونو به عنوان processed استفاده کن
+    # 1) Priority: if you have Final_dataset.csv, use it as the processed dataset
     final_path = RAW_DIR / "Final_dataset.csv"
     if final_path.exists():
         df = pd.read_csv(final_path)
@@ -18,15 +18,15 @@ def main():
         print(f"[OK] Saved processed dataset: {out}")
         return
 
-    # 2) اگر Final_dataset نداری، از Raw_Property.csv بساز
+    # 2) If you don't have Final_dataset.csv, use Raw_Property.csv
     raw_path = RAW_DIR / "Raw_Property.csv"
     if not raw_path.exists():
         raise FileNotFoundError("Put Raw_Property.csv (or Final_dataset.csv) into data/raw/")
 
     df = pd.read_csv(raw_path)
 
-    # --- اینجا ستون‌ها ممکن است اسمشان فرق کند ---
-    # تلاش می‌کنیم چند حالت رایج را پوشش دهیم:
+    # --- Column names may be different here ---
+    # We try to cover several common cases:
     # price:
     if "price" in df.columns:
         df["price_lakh"] = df["price"].apply(parse_price_to_lakh)
@@ -43,7 +43,7 @@ def main():
     elif "Area_SqFt" in df.columns:
         df["area_sqft"] = pd.to_numeric(df["Area_SqFt"], errors="coerce")
     else:
-        # اگر Area_Tpye داری، فعلاً فقط عددهاشو می‌کشیم بیرون
+        # If Area_Type exists, for now we only extract its numeric values
         if "Area_Tpye" in df.columns:
             df["area_sqft"] = df["Area_Tpye"].astype(str).str.replace(",", "").str.extract(r"([0-9]*\.?[0-9]+)")[0]
             df["area_sqft"] = pd.to_numeric(df["area_sqft"], errors="coerce")
@@ -54,12 +54,12 @@ def main():
     elif "Bedroom" in df.columns:
         df["bhk"] = pd.to_numeric(df["Bedroom"], errors="coerce")
 
-    # تمیزکاری رشته‌ها
+    # Cleaning string values
     for c in ["type", "locality", "region", "status", "age", "Location", "Region", "Availability", "Property_Age"]:
         if c in df.columns:
             df[c] = df[c].apply(norm_str)
 
-    # حذف ردیف‌های خراب
+    
     df["area_sqft"] = pd.to_numeric(df.get("area_sqft"), errors="coerce")
     df = df.dropna(subset=["price_lakh", "area_sqft"])
     df = df[(df["price_lakh"] > 0) & (df["area_sqft"] > 50)]
